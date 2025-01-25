@@ -41,56 +41,27 @@ class PlayState extends FlxState
 
 		// Create _coins to collect (see createCoin() function below for more info)
 		_coins = new FlxGroup();
-
-		// Top left _coins
-		createCoin(18, 4);
-		createCoin(12, 4);
-		createCoin(9, 4);
-		createCoin(8, 11);
-		createCoin(1, 7);
-		createCoin(3, 4);
-		createCoin(5, 2);
-		createCoin(15, 11);
-		createCoin(16, 11);
-
-		// Bottom left _coins
-		createCoin(3, 16);
-		createCoin(4, 16);
-		createCoin(1, 23);
-		createCoin(2, 23);
-		createCoin(3, 23);
-		createCoin(4, 23);
-		createCoin(5, 23);
-		createCoin(12, 26);
-		createCoin(13, 26);
-		createCoin(17, 20);
-		createCoin(18, 20);
-
-		// Top right _coins
-		createCoin(21, 4);
-		createCoin(26, 2);
-		createCoin(29, 2);
-		createCoin(31, 5);
-		createCoin(34, 5);
-		createCoin(36, 8);
-		createCoin(33, 11);
-		createCoin(31, 11);
-		createCoin(29, 11);
-		createCoin(27, 11);
-		createCoin(25, 11);
-		createCoin(36, 14);
-
-		// Bottom right _coins
-		createCoin(38, 17);
-		createCoin(33, 17);
-		createCoin(28, 19);
-		createCoin(25, 20);
-		createCoin(18, 26);
-		createCoin(22, 26);
-		createCoin(26, 26);
-		createCoin(30, 26);
-
 		add(_coins);
+
+		// read for custom values in the level data
+		var x = 0;
+		var y = 0;
+		var maparray:Array<Dynamic> = FileManager.getDataFile('level.csv').split(',');
+		for (i in maparray)
+		{
+			switch (maparray[i])
+			{
+				case "2":
+					createCoin(x, y);
+			}
+
+			x++;
+			if (x > 40)
+			{
+				y++;
+				x = 0;
+			}
+		}
 
 		// Create _player
 		_player = new FlxSprite(FlxG.width / 2 - 5);
