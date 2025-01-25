@@ -20,10 +20,10 @@ class FileManager
 			MAYBE there is now a feature flag required to be specified for specific functions to function. 
 			I mean these can be big too but yknow. 1 thing at a time.
 	 */
-	public static var FILE_MANAGER_VERSION:Float = 3.5;
+	public static var FILE_MANAGER_VERSION:Float = 4.0;
 
 	public static function getPath(path:String, ?PATH_TYPE:PathTypes = DEFAULT):String
-		return 'assets/$PATH_TYPE/$path';
+		return 'assets/${PATH_TYPE}${path}';
 
 	public static function getAssetFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
 		return getPath('$file', PATH_TYPE); // 'assets/default/$file
@@ -62,5 +62,5 @@ class FileManager
 
 enum abstract PathTypes(String) from String to String
 {
-	public var DEFAULT:String = "default";
+	public var DEFAULT:String = "";
 }
